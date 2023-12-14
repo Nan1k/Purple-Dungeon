@@ -21,7 +21,7 @@ def return_to_start():
     t.goto(0,0)
 
 
-# создаем класс "walls", "enemy", "coin"
+# создаем класс "walls", "portal", "coin"
 class Walls(turtle.Turtle):
     def __init__(self, x, y):
         turtle.Turtle.__init__(self)
@@ -31,7 +31,7 @@ class Walls(turtle.Turtle):
         self.color(walls_color)
         self.shapesize(wall_size / 20, wall_size / 20)
 
-class Enemy(turtle.Turtle):
+class Portal(turtle.Turtle):
     def __init__(self, x, y):
         turtle.Turtle.__init__(self)
         self.penup()
@@ -49,7 +49,7 @@ class Coin(turtle.Turtle):
         self.color("yellow")
         self.shapesize(wall_size / 20, wall_size / 20)
 
-# создаем объекты класса "walls", "enemy", "coin"
+# создаем объекты класса "walls", "portal", "coin"
 walls = []
 walls.append(Walls(0, 100))
 walls.append(Walls(-20, 100))
@@ -147,9 +147,9 @@ walls.append(Walls(120, -80))
 walls.append(Walls(140, -80))
 
 
-enemies = []
-enemies.append(Enemy(-100, -80))
-enemies.append(Enemy(140, 20))
+portals = []
+portal.append(Portal(-100, -80))
+portal.append(Portal(140, 20))
 
 coins = []
 coin_1 = Coin(-180,-80)
@@ -175,13 +175,13 @@ def move_right():
         t.setheading(0)
         t.forward(20)
 
-# функция для проверки столкновения с объектами класса "walls", "enemy", "coin"    
+# функция для проверки столкновения с объектами класса "walls", "portal", "coin"    
 def check_collision(x, y):
     for wall in walls:
         if (wall.distance(x, y) < wall_size):
             return True
-    for enemy in enemies:
-        if (enemy.distance(x, y) < wall_size):
+    for portal in portals:
+        if (portal.distance(x, y) < wall_size):
             return_to_start()
     for coin_1 in coins:
         if (coin_1.distance(x, y) < wall_size):
